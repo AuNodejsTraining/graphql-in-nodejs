@@ -17,8 +17,13 @@ git init
 ## Hook Setup
 
 ```bash
+# Dependencies
 yarn add @commitlint/cli @commitlint/config-conventional husky -D
+
+# Commitlint config
 echo "module.exports = { extends: ['@commitlint/config-conventional'] };" > commitlint.config.js
+
+# Husky config
 yarn husky install
 
 cat <<EEE > .husky/commit-msg
