@@ -36,6 +36,13 @@ EEE
 chmod a+x .husky/commit-msg
 ```
 
+## TypeScript Setup
+
+```bash
+yarn add typescript ts-node -D
+npx tsc --init
+```
+
 # References
 
 - [Git ignore](https://raw.githubusercontent.com/github/gitignore/main/Node.gitignore)
