@@ -2,8 +2,13 @@ import { gql } from 'apollo-server';
 import { DocumentNode } from 'graphql';
 
 export const typeDefs: DocumentNode = gql`
+  """
+  This is gender type
+  """
   enum Gender {
-    MALE, FEMALE, OTHER
+    MALE
+    FEMALE
+    OTHER
   }
 
   type Profile {
@@ -13,6 +18,7 @@ export const typeDefs: DocumentNode = gql`
     dob: String!
     idCard: String!
     avatar: String
+    pets: [Pet]!
   }
 
   type Query {
