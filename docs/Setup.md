@@ -9,6 +9,7 @@ nvm install 16.15.1
 # Dependencies
 yarn init -y
 yarn add apollo-server apollo-server-core graphql
+yarn add winston
 
 # Git
 git init
