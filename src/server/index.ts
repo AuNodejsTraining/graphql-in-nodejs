@@ -1,30 +1,7 @@
-import { ApolloServer } from 'apollo-server';
-import { ApolloServerPluginLandingPageDisabled, ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
-import { resolvers } from '../resolvers';
-import { typeDefs } from '../typeDefs';
-import { BaseServerBuilder } from './BaseServerBuilder';
+import { ApolloServer } from 'apollo-server'
+import { ApolloServerBuilder } from './ApolloServerBuilder'
 
-export class ApolloServerBuilder extends BaseServerBuilder {
-  landingPagePlugin() {
-    return ApolloServerBuilder.isProductionEnv()
-      ? ApolloServerPluginLandingPageDisabled()
-      // TODO https://github.com/graphql/graphql-playground/issues/1143
-      : ApolloServerPluginLandingPageGraphQLPlayground({
-        settings: {
-          'editor.theme': 'dark',
-          'request.credentials': 'include'
-        }
-      })
-  }
-
-  async build(): Promise<ApolloServer> {
-    const server = new ApolloServer({
-      typeDefs,
-      resolvers,
-      csrfPrevention: true,
-      plugins: [this.landingPagePlugin()],
-    });
-
-    return server
-  }
+export const buildServer = (): Promise<ApolloServer> => {
+  const apolloServer = new ApolloServerBuilder()
+  return apolloServer.build()
 }
