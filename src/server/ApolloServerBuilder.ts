@@ -1,5 +1,5 @@
 import { ApolloServer } from 'apollo-server';
-import { ApolloServerPluginLandingPageDisabled, ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
+import { ApolloServerPluginInlineTrace, ApolloServerPluginLandingPageDisabled, ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 import { application } from '../graphql';
 import { BaseServerBuilder } from './BaseServerBuilder';
 import dataSources from './datasources'
@@ -10,7 +10,8 @@ export class ApolloServerBuilder extends BaseServerBuilder {
   landingPagePlugin() {
     return this.isProduction
       ? ApolloServerPluginLandingPageDisabled()
-      // TODO https://github.com/graphql/graphql-playground/issues/1143
+      // TODO: https://github.com/graphql/graphql-playground/issues/1143
+      // https://www.apollographql.com/docs/apollo-server/testing/build-run-queries#graphql-playground
       : ApolloServerPluginLandingPageGraphQLPlayground({
         settings: {
           'editor.theme': 'dark',
@@ -25,7 +26,10 @@ export class ApolloServerBuilder extends BaseServerBuilder {
       csrfPrevention: true,
       introspection: !this.isProduction,
       dataSources,
-      plugins: [this.landingPagePlugin()],
+      plugins: [
+        ApolloServerPluginInlineTrace,
+        this.landingPagePlugin()
+      ],
       context: ({ req }) => this.buildContext(req),
       formatError: (err: Error) => {
         this._logger.error(err)
