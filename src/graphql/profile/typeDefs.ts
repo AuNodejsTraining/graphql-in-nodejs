@@ -15,7 +15,7 @@ export const typeDefs: DocumentNode = gql`
     id: ID!
     name: String!
     gender: Gender!
-    dob: String!
+    dob: DateType!
     idCard: String!
     avatar: String
     pets: [Pet]!

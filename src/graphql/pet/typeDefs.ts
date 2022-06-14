@@ -5,7 +5,7 @@ export const typeDefs: DocumentNode = gql`
   type Pet {
     id: ID!
     name: String!
-    dob: String!
+    dob: DateType!
     type: String!
     registrationNumber: String!
     photo: String
