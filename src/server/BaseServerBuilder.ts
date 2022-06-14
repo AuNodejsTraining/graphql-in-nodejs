@@ -4,7 +4,7 @@ import { logger } from '../common/logger'
 import { Context } from '../types/Context'
 
 export class BaseServerBuilder {
-  protected _logger: Logger
+  protected readonly _logger: Logger
 
   public constructor () {
     this._logger = logger

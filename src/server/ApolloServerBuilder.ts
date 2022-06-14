@@ -5,8 +5,10 @@ import { typeDefs } from '../typeDefs';
 import { BaseServerBuilder } from './BaseServerBuilder';
 
 export class ApolloServerBuilder extends BaseServerBuilder {
+  private readonly isProduction = ApolloServerBuilder.isProductionEnv()
+
   landingPagePlugin() {
-    return ApolloServerBuilder.isProductionEnv()
+    return this.isProduction
       ? ApolloServerPluginLandingPageDisabled()
       // TODO https://github.com/graphql/graphql-playground/issues/1143
       : ApolloServerPluginLandingPageGraphQLPlayground({
@@ -22,6 +24,7 @@ export class ApolloServerBuilder extends BaseServerBuilder {
       typeDefs,
       resolvers,
       csrfPrevention: true,
+      introspection: !this.isProduction,
       plugins: [this.landingPagePlugin()],
       context: ({ req }) => this.buildContext(req),
       formatError: (err: Error) => {
