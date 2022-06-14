@@ -8,7 +8,8 @@
   "private": "false",
   "scripts": {
     "build": "yarn tsc",
-    "start": "ts-node src/index.ts"
+    "start": "ts-node src/index.ts",
+    "postinstall": "yarn husky install"
   },
   "dependencies": {
     "apollo-server": "^3.8.2",
