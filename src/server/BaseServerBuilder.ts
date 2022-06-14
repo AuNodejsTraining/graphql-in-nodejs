@@ -19,7 +19,7 @@ export class BaseServerBuilder {
   }
 
   protected async buildContext (req: Request): Promise<Context> {
-    const authorization = req.headers["authorization"] as string
+    const authorization = req.headers.authorization as string
     return { authorization }
   }
 }

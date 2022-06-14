@@ -1,12 +1,12 @@
-import { Resolvers } from 'graphql-modules';
-import { Book } from '../../types/Book';
-import { BookInput } from '../../types/BookInput';
-import { books } from './datasets';
+import { Resolvers } from 'graphql-modules'
+import { Book } from '../../types/Book'
+import { BookInput } from '../../types/BookInput'
+import { books } from './datasets'
 
 export const resolvers: Resolvers = {
   Query: {
     books: () => books,
-    book: (_: unknown, { id }: { id: string }): Book => books.find(book => book.id === id)!,
+    book: (_: unknown, { id }: { id: string }): Book => books.find(book => book.id === id)!
   },
   Mutation: {
     createBook: (_: unknown, { book }: { book: BookInput }): Book => {

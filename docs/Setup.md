@@ -58,6 +58,12 @@ yarn add json-server -D
 yarn add jest ts-jest @types/jest -D
 ```
 
+## Eslint Setup
+
+```bash
+yarn add eslint eslint-config-standard eslint-plugin-import eslint-plugin-n eslint-plugin-promise eslint-plugin-standard @typescript-eslint/eslint-plugin @typescript-eslint/parser -D
+```
+
 # References
 
 - [Git ignore](https://raw.githubusercontent.com/github/gitignore/main/Node.gitignore)

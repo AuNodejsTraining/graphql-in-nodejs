@@ -1,13 +1,13 @@
-import { ApolloServer } from 'apollo-server';
-import { ApolloServerPluginInlineTrace, ApolloServerPluginLandingPageDisabled, ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
-import { application } from '../graphql';
-import { BaseServerBuilder } from './BaseServerBuilder';
+import { ApolloServer } from 'apollo-server'
+import { ApolloServerPluginInlineTrace, ApolloServerPluginLandingPageDisabled, ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core'
+import { application } from '../graphql'
+import { BaseServerBuilder } from './BaseServerBuilder'
 import dataSources from './datasources'
 
 export class ApolloServerBuilder extends BaseServerBuilder {
   private readonly isProduction = ApolloServerBuilder.isProductionEnv()
 
-  landingPagePlugin() {
+  landingPagePlugin () {
     return this.isProduction
       ? ApolloServerPluginLandingPageDisabled()
       // TODO: https://github.com/graphql/graphql-playground/issues/1143
@@ -20,7 +20,7 @@ export class ApolloServerBuilder extends BaseServerBuilder {
       })
   }
 
-  async build(): Promise<ApolloServer> {
+  async build (): Promise<ApolloServer> {
     const server = new ApolloServer({
       schema: application.createSchemaForApollo(),
       csrfPrevention: true,
@@ -35,7 +35,7 @@ export class ApolloServerBuilder extends BaseServerBuilder {
         this._logger.error(err)
         return err
       }
-    });
+    })
 
     return server
   }

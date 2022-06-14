@@ -1,6 +1,6 @@
-import { GraphQLScalarType } from 'graphql';
-import { Resolvers } from 'graphql-modules';
-import moment from 'moment';
+import { GraphQLScalarType } from 'graphql'
+import { Resolvers } from 'graphql-modules'
+import moment from 'moment'
 
 // https://github.com/Urigo/graphql-scalars
 const DateTypeResolver = new GraphQLScalarType({
