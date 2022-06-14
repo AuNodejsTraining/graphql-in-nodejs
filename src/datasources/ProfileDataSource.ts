@@ -1,11 +1,11 @@
+import config from '../config';
 import { Profile } from '../types/Profile';
 import BaseDataSource from './BaseDataSource';
 
 export class ProfileDataSource extends BaseDataSource {
   constructor() {
     super();
-    // TODO: get base url from config
-    this.baseURL = "http://localhost:3000"
+    this.baseURL = config.profile.url
   }
 
   async getProfile (): Promise<Profile> {

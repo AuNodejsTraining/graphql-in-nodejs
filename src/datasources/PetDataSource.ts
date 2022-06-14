@@ -1,11 +1,11 @@
+import config from '../config';
 import { Pet } from '../types/Pet';
 import BaseDataSource from './BaseDataSource';
 
 export class PetDataSource extends BaseDataSource {
   constructor() {
     super();
-    // TODO: get base url from config
-    this.baseURL = "http://localhost:3000"
+    this.baseURL = config.pet.url
   }
 
   async getPets (): Promise<Pet[]> {
