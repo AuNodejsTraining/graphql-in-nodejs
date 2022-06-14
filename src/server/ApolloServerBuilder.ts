@@ -1,8 +1,8 @@
 import { ApolloServer } from 'apollo-server';
 import { ApolloServerPluginLandingPageDisabled, ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
-import { resolvers } from '../resolvers';
-import { typeDefs } from '../typeDefs';
 import { BaseServerBuilder } from './BaseServerBuilder';
+import { resolvers } from '../graphql/resolvers';
+import { typeDefs } from '../graphql/typeDefs';
 
 export class ApolloServerBuilder extends BaseServerBuilder {
   private readonly isProduction = ApolloServerBuilder.isProductionEnv()
