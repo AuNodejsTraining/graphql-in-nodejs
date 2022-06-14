@@ -1,5 +1,9 @@
+import { server } from './server'
+
 const start = (): void => {
-  console.log("server started.")
+  server.listen().then(({ url }) => {
+    console.log(`🚀  Server ready at ${url}`);
+  });
 }
 
 start()
