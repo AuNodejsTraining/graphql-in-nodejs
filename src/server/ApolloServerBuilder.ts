@@ -1,8 +1,7 @@
 import { ApolloServer } from 'apollo-server';
 import { ApolloServerPluginLandingPageDisabled, ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
+import { application } from '../graphql';
 import { BaseServerBuilder } from './BaseServerBuilder';
-import { resolvers } from '../graphql/resolvers';
-import { typeDefs } from '../graphql/typeDefs';
 
 export class ApolloServerBuilder extends BaseServerBuilder {
   private readonly isProduction = ApolloServerBuilder.isProductionEnv()
@@ -21,8 +20,7 @@ export class ApolloServerBuilder extends BaseServerBuilder {
 
   async build(): Promise<ApolloServer> {
     const server = new ApolloServer({
-      typeDefs,
-      resolvers,
+      schema: application.createSchemaForApollo(),
       csrfPrevention: true,
       introspection: !this.isProduction,
       plugins: [this.landingPagePlugin()],
