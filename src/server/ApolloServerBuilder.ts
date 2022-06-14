@@ -23,6 +23,11 @@ export class ApolloServerBuilder extends BaseServerBuilder {
       resolvers,
       csrfPrevention: true,
       plugins: [this.landingPagePlugin()],
+      context: ({ req }) => this.buildContext(req),
+      formatError: (err: Error) => {
+        this._logger.error(err)
+        return err
+      }
     });
 
     return server
