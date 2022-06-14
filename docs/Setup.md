@@ -10,6 +10,7 @@ nvm install 16.15.1
 yarn init -y
 yarn add apollo-server apollo-server-core graphql
 yarn add graphql-modules
+yarn add apollo-datasource-rest
 yarn add winston
 
 # Git
@@ -43,6 +44,12 @@ chmod a+x .husky/commit-msg
 ```bash
 yarn add typescript ts-node -D
 npx tsc --init
+```
+
+## Mock Server Setup
+
+```bash
+yarn add json-server -D
 ```
 
 # References

@@ -6,6 +6,7 @@
 
 ```bash
 yarn install
+yarn json-server --watch api/db.json
 yarn start
 ```
 

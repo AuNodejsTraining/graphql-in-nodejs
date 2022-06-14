@@ -2,6 +2,7 @@ import { ApolloServer } from 'apollo-server';
 import { ApolloServerPluginLandingPageDisabled, ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 import { application } from '../graphql';
 import { BaseServerBuilder } from './BaseServerBuilder';
+import dataSources from './datasources'
 
 export class ApolloServerBuilder extends BaseServerBuilder {
   private readonly isProduction = ApolloServerBuilder.isProductionEnv()
@@ -23,6 +24,7 @@ export class ApolloServerBuilder extends BaseServerBuilder {
       schema: application.createSchemaForApollo(),
       csrfPrevention: true,
       introspection: !this.isProduction,
+      dataSources,
       plugins: [this.landingPagePlugin()],
       context: ({ req }) => this.buildContext(req),
       formatError: (err: Error) => {
