@@ -6,9 +6,8 @@ const start = async (): Promise<void> => {
   }
 
   const server = await buildServer()
-  server.listen(options).then(({ url }) => {
-    console.log(`🚀  Server ready at ${url}`);
-  });
+  const { url } = await server.listen(options);
+  console.log(`🚀  Server ready at ${url}`);
 }
 
 start()
