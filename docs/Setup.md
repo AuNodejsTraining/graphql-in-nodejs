@@ -52,6 +52,12 @@ npx tsc --init
 yarn add json-server -D
 ```
 
+## Jest Setup
+
+```bash
+yarn add jest ts-jest @types/jest -D
+```
+
 # References
 
 - [Git ignore](https://raw.githubusercontent.com/github/gitignore/main/Node.gitignore)
