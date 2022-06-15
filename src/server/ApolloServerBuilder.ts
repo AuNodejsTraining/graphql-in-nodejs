@@ -1,6 +1,7 @@
-import { ApolloServer } from 'apollo-server'
-import { ApolloServerPluginInlineTrace, ApolloServerPluginLandingPageDisabled, ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core'
-import { application } from '../graphql'
+import { Server } from 'http'
+import { GraphQLSchema } from 'graphql'
+import { ApolloServer } from 'apollo-server-express'
+import { ApolloServerPluginDrainHttpServer, ApolloServerPluginInlineTrace, ApolloServerPluginLandingPageDisabled, ApolloServerPluginLandingPageGraphQLPlayground, PluginDefinition } from 'apollo-server-core'
 import { BaseServerBuilder } from './BaseServerBuilder'
 import dataSources from './datasources'
 
@@ -20,15 +21,18 @@ export class ApolloServerBuilder extends BaseServerBuilder {
       })
   }
 
-  async build (): Promise<ApolloServer> {
+  async build (httpServer: Server, schema: GraphQLSchema, plugin: PluginDefinition): Promise<ApolloServer> {
     const server = new ApolloServer({
-      schema: application.createSchemaForApollo(),
+      schema,
       csrfPrevention: true,
       introspection: !this.isProduction,
       dataSources,
       plugins: [
         ApolloServerPluginInlineTrace,
-        this.landingPagePlugin()
+        this.landingPagePlugin(),
+        // Proper shutdown for the HTTP server.
+        ApolloServerPluginDrainHttpServer({ httpServer }),
+        plugin
       ],
       context: ({ req }) => this.buildContext(req),
       formatError: (err: Error) => {

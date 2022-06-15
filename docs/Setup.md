@@ -64,6 +64,15 @@ yarn add jest ts-jest @types/jest -D
 yarn add eslint eslint-config-standard eslint-plugin-import eslint-plugin-n eslint-plugin-promise eslint-plugin-standard @typescript-eslint/eslint-plugin @typescript-eslint/parser -D
 ```
 
+## Subscription Setup
+
+```bash
+yarn add graphql-ws ws @graphql-tools/schema apollo-server-core
+yarn add @types/ws -D
+yarn remove apollo-server
+yarn add apollo-server-express
+```
+
 # References
 
 - [Git ignore](https://raw.githubusercontent.com/github/gitignore/main/Node.gitignore)
