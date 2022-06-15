@@ -1,11 +1,11 @@
 {
   "name": "graphql-in-nodejs",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.ts",
   "license": "MIT",
   "repository": "git@github.com:AuNodejsTraining/graphql-in-nodejs.git",
   "author": "Josaber <1174980997@qq.com>",
-  "private": "false",
+  "private": false,
   "scripts": {
     "eslint": "eslint src/** test/**",
     "eslint:fix": "eslint src/** test/** --fix",
