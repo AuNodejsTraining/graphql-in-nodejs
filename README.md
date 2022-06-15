@@ -32,3 +32,39 @@ APP_ENV=prod yarn start
   }
 }
 ```
+
+- Mutation
+
+```graphql
+mutation($book: BookInput!) {
+  createBook(book: $book) {
+    id
+  }
+}
+```
+
+```json
+// variables
+{
+  "book": {
+    "author": "bqliu",
+    "title": "graphql"
+  }
+}
+```
+
+- Subscription
+
+```graphql
+subscription {
+  statistics {
+    onlineUsers
+  }
+}
+
+subscription {
+  event {
+    message
+  }
+}
+```
