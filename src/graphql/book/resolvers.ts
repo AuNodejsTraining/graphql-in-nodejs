@@ -13,7 +13,7 @@ export const resolvers: Resolvers = {
     createBook: (_: unknown, { book }: { book: BookInput }): Book => {
       const newBook = { id: `book${books.length + 1}`, ...book }
       books.push(newBook)
-      pubsub.publish('EVENT', { message: `New book ${newBook.id} created!` })
+      pubsub.publish('EVENT', { event: { message: `New book ${newBook.id} created!` } })
       return newBook
     }
   },
