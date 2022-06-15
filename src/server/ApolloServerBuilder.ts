@@ -29,7 +29,7 @@ export class ApolloServerBuilder extends BaseServerBuilder {
       dataSources,
       plugins: [
         ApolloServerPluginInlineTrace,
-        this.landingPagePlugin(),
+        // this.landingPagePlugin(),
         // Proper shutdown for the HTTP server.
         ApolloServerPluginDrainHttpServer({ httpServer }),
         plugin

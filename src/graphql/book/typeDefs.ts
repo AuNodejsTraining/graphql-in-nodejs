@@ -8,6 +8,10 @@ export const typeDefs: DocumentNode = gql`
     author: String!
   }
 
+  type Event {
+    message: String!
+  }
+
   input BookInput {
     title: String!
     author: String!
@@ -20,5 +24,9 @@ export const typeDefs: DocumentNode = gql`
 
   type Mutation {
     createBook(book: BookInput!): Book!
+  }
+
+  type Subscription {
+    event: Event!
   }
 `

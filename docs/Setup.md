@@ -71,6 +71,7 @@ yarn add graphql-ws ws @graphql-tools/schema apollo-server-core
 yarn add @types/ws -D
 yarn remove apollo-server
 yarn add apollo-server-express
+yarn add graphql-subscriptions
 ```
 
 # References

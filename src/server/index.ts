@@ -22,7 +22,8 @@ export const buildServer = async (): Promise<Server> => {
           }
         }
       }
-    })
+    }
+  )
   await apolloServer.start()
   apolloServer.applyMiddleware({ app })
   return httpServer

@@ -1,6 +1,7 @@
 import { Resolvers } from 'graphql-modules'
 import { Book } from '../../types/Book'
 import { BookInput } from '../../types/BookInput'
+import { pubsub } from '../pubsub'
 import { books } from './datasets'
 
 export const resolvers: Resolvers = {
@@ -12,7 +13,13 @@ export const resolvers: Resolvers = {
     createBook: (_: unknown, { book }: { book: BookInput }): Book => {
       const newBook = { id: `book${books.length + 1}`, ...book }
       books.push(newBook)
+      pubsub.publish('EVENT', { message: `New book ${newBook.id} created!` })
       return newBook
+    }
+  },
+  Subscription: {
+    event: {
+      subscribe: () => pubsub.asyncIterator(['EVENT'])
     }
   }
 }
