@@ -8,7 +8,9 @@ export const typeDefs: DocumentNode = gql`
     dob: DateType!
     type: String!
     registrationNumber: String!
-    photo: String
+    photo: String @deprecated(reason: "Use avatar.")
+    avatar: String
+    owner: Profile!
   }
 
   type Query {

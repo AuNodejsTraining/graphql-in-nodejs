@@ -4,5 +4,6 @@ export type Pet = {
   dob: string;
   type: string;
   registrationNumber: string;
-  photo: string;
+  photo?: string;
+  avatar?: string;
 }

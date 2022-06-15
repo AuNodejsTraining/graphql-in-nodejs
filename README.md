@@ -15,3 +15,20 @@ yarn start
 ```bash
 APP_ENV=prod yarn start
 ```
+
+## Demos
+
+- Directive
+
+```graphql
+{
+  profile {
+    name
+    pets {
+      name @skip(if: true)
+      photo
+      avatar @include(if: true)
+    }
+  }
+}
+```
