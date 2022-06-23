@@ -13,6 +13,8 @@ yarn start
 - Production env
 
 ```bash
+yarn install
+yarn json-server --watch api/db.json
 APP_ENV=prod yarn start
 ```
 
